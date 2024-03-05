@@ -1,5 +1,7 @@
 package com.example.exampleproject.controller;
 
+import com.example.exampleproject.common.AroundHubException;
+import com.example.exampleproject.common.Constants;
 import com.example.exampleproject.data.dto.ProductDto;
 import com.example.exampleproject.data.entity.ProductEntity;
 import com.example.exampleproject.data.service.ProductService;
@@ -65,5 +67,11 @@ public class ProductController {
     @DeleteMapping(value = "/product/{productId}")
     public  ProductDto deleteProduct(@PathVariable String productId) {
         return null;
+    }
+
+    @PostMapping(value = "/product/exception")
+    public void exceptionTest() throws AroundHubException { //AroundHubException에서 에러 발생 시 출력 값 설정
+        throw new AroundHubException(Constants.ExceptionClass.PRODUCT, HttpStatus.BAD_REQUEST, "의도한 에러가 발생했습니다.");
+        //
     }
 }

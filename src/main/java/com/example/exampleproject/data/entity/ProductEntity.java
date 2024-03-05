@@ -1,9 +1,7 @@
 package com.example.exampleproject.data.entity;
 
 import com.example.exampleproject.data.dto.ProductDto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -16,7 +14,7 @@ import lombok.*;
 //Entity : DB 테이블과 1:1로 밀접한 관계 (DTO와 유사)
 public class ProductEntity {
 
-   @Id //PK
+   @Id @GeneratedValue(strategy = GenerationType.IDENTITY) //PK
     String productId;
     String productName;
     Integer productPrice;
